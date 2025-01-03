@@ -1,0 +1,10 @@
+[
+    {
+        "model": "gpt-4o-mini",
+        "api_key": "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"
+    },
+    {
+        "model": "gpt-4o",
+        "api_key": "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"
+    }
+]
