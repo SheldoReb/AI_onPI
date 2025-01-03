@@ -1,7 +1,6 @@
 import autogen
 from autogen import UserProxyAgent
 from autogen.agentchat.contrib.captainagent import CaptainAgent
-from autogen.coding import DockerCommandLineCodeExecutor
 import tempfile
 from pathlib import Path
 from autogen.coding import CodeBlock, LocalCommandLineCodeExecutor
@@ -28,12 +27,15 @@ captain_agent = CaptainAgent(
     name="captain_agent",
     llm_config=llm_config,
     code_execution_config={"executer": local_executor,
-                           "use_docker": False},
+                           "use_docker": False,
+                           "last_n_messages": 1},
     agent_config_save_path="captain_agent_config.json",  
 )
 
 
-captain_user_proxy = UserProxyAgent(name="captain_user_proxy", human_input_mode="ALWAYS")
+captain_user_proxy = UserProxyAgent(name="captain_user_proxy", 
+                                    human_input_mode="ALWAYS",
+                                    code_execution_config={"use_docker": False})
 
 USER_QUERY = """
 setup docker and home assistant with docker and check if you can use the home assistant api for configuration and management.
