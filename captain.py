@@ -23,13 +23,22 @@ work_dir.mkdir(exist_ok=True)
 local_executor = LocalCommandLineCodeExecutor(work_dir=work_dir)
 
 # build agents
+
+DESCRIPTION = f"""YOUR ROLE: You are managing a Raspberry 3 B, by building a group of agents at a proper time to solve a task. 
+All USER_QUERIES have to be done on the Raspberry 3 B.
+Your main mission is to manage a smart home setup with home assistant.
+""".strip()
+
 captain_agent = CaptainAgent(
     name="captain_agent",
+    description=DESCRIPTION,
     llm_config=llm_config,
     code_execution_config={"executer": local_executor,
                            "use_docker": False,
                            "last_n_messages": 1},
-    agent_config_save_path="captain_agent_configs",  
+#    agent_config_save_path="captain_agent_configs",
+    agent_lib="captainagent_expert_library", 
+#    tool_lib="tools" 
 )
 
 
@@ -40,20 +49,11 @@ captain_user_proxy = UserProxyAgent(name="captain_user_proxy",
 USER_QUERY = """
 setup docker and home assistant with docker and check if you can use the home assistant api for configuration and management.
 Create a short overview of the local Pi
-"""
-
-QUERY = f"""YOUR ROLE: You are managing a Raspberry 3 B. 
-All USER_QUERIES have to be done on the Raspberry 3 B.
-Your main mission is to manage a smart home setup with home assistant.
-
-USER_QUERY: 
-{USER_QUERY}
-
 """.strip()
 
 result = captain_user_proxy.initiate_chat(
     captain_agent,
-    message=QUERY,
+    message=USER_QUERY,
     max_turns=10
 )
 
