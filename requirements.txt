@@ -1,10 +1,5 @@
-markdownify
-arxiv
-pymupdf
-wikipedia-api
-easyocr
-python-pptx
-openai-whisper
+autogen
+ag2[captainagent]
 pandas
-scipy
-sentence-transformers
+sentences_transformers
+pysqlite3
