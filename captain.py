@@ -29,7 +29,7 @@ captain_agent = CaptainAgent(
     code_execution_config={"executer": local_executor,
                            "use_docker": False,
                            "last_n_messages": 1},
-    agent_config_save_path="captain_agent_config.json",  
+    agent_config_save_path="captain_agent_configs",  
 )
 
 
@@ -39,6 +39,7 @@ captain_user_proxy = UserProxyAgent(name="captain_user_proxy",
 
 USER_QUERY = """
 setup docker and home assistant with docker and check if you can use the home assistant api for configuration and management.
+Create a short overview of the local Pi
 """
 
 QUERY = f"""YOUR ROLE: You are managing a Raspberry 3 B. 

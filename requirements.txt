@@ -1,1 +1,3 @@
 ag2[captainagent]
+pandas
+sentences_transformers
