@@ -17,14 +17,6 @@ config_list = autogen.config_list_from_json(
 
 llm_config = {"temperature": 0, "config_list": config_list}
 
-# Set up the Docker executor
-docker_executor = DockerCommandLineCodeExecutor(
-    image="python:3.12-slim",
-    timeout=3600,  # Set a long timeout (e.g., 1 hour) to keep the container alive
-    work_dir=temp_dir.name,
-    stop_container=False  # This flag keeps the container running
-)
-
 # Set up the Local executor
 work_dir = Path("executor_work_dir")
 work_dir.mkdir(exist_ok=True)
