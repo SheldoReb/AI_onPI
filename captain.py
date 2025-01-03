@@ -27,7 +27,8 @@ local_executor = LocalCommandLineCodeExecutor(work_dir=work_dir)
 captain_agent = CaptainAgent(
     name="captain_agent",
     llm_config=llm_config,
-    code_execution_config={"executer": local_executor},
+    code_execution_config={"executer": local_executor,
+                           "use_docker": False},
     agent_config_save_path="captain_agent_config.json",  
 )
 
