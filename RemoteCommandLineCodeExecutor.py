@@ -235,3 +235,28 @@ class RemoteCommandLineCodeExecutor(CodeExecutor):
         logging.info("Forcing SSH reconnection.")
         self._disconnect_if_necessary()
         self._connect_if_necessary()
+    
+    def test_connection(self) -> bool:
+        """
+        Attempt a simple command over SSH to verify connectivity.
+        Returns True if the remote command succeeds, otherwise raises an exception.
+        """
+        self._connect_if_necessary()  # Ensure we are connected
+        
+        try:
+            # Run a harmless command, e.g. `echo "connected"`
+            stdin, stdout, stderr = self._ssh_client.exec_command('echo "connected"', timeout=self._timeout)
+            rc = stdout.channel.recv_exit_status()
+            if rc != 0:
+                # If the command failed, we can read stderr for debugging
+                error_output = stderr.read().decode("utf-8", errors="replace")
+                raise RuntimeError(f"Remote test command failed (exit={rc}): {error_output}")
+
+            # Check output just to confirm we got 'connected'
+            output = stdout.read().decode("utf-8", errors="replace")
+            if "connected" not in output:
+                raise RuntimeError(f"Unexpected output when testing connection: {output}")
+
+            return True
+        except Exception as e:
+            raise RuntimeError(f"Connection test failed: {e}")
