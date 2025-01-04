@@ -70,8 +70,8 @@ captain_agent = CaptainAgent(
                             "executer": docker_executor,
 #                           "use_docker": docker_executor,
                            "last_n_messages": 1},
-#    agent_config_save_path="captain_agent_configs",
-    agent_lib="expert_library/expert_library.json", 
+    agent_config_save_path="captain_agent_configs",
+#    agent_lib="expert_library/expert_library.json", 
 #    tool_lib="tools" 
 )
 
