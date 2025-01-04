@@ -81,8 +81,7 @@ captain_user_proxy = UserProxyAgent(name="captain_user_proxy",
                                     code_execution_config={"use_docker": docker_executor})
 
 USER_QUERY = """
-Lets check if we can configure home assistant via the api on the running container.
-lets create the frist user for home assistant via the api, name="Papaja"
+analyze the folder tools_ag2, then create a new tool for managing home assistant.
 """.strip()
 
 result = captain_user_proxy.initiate_chat(
