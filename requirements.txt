@@ -3,3 +3,4 @@ ag2[captainagent]
 pandas
 sentences_transformers
 pysqlite3
+chromadb

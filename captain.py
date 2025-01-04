@@ -39,12 +39,35 @@ All USER_QUERIES have to be done on the Raspberry 3 B.
 Your main mission is to manage a smart home setup with home assistant.
 """.strip()
 
+DEFAULT_NESTED_CONFIG = {
+    "autobuild_init_config": {
+        "config_file_or_env": "OAI_CONFIG_LIST",
+        "builder_model": "gpt-4o",
+        "agent_model": "gpt-4o",
+    },
+    "autobuild_build_config": {
+        "default_llm_config": {"temperature": 1, "top_p": 0.95, "max_tokens": 2048},
+        "code_execution_config": {
+            "timeout": 300,
+            "work_dir": "groupchat",
+            "last_n_messages": 2,
+            "use_docker": False,
+        },
+        "coding": True,
+    },
+    "group_chat_config": {"max_round": 20},
+    "group_chat_llm_config": None,
+    "max_turns": 10,
+}
+
+
 captain_agent = CaptainAgent(
     name="captain_agent",
     description=DESCRIPTION,
     llm_config=llm_config,
+    nested_config=DEFAULT_NESTED_CONFIG,
     code_execution_config={
-                            "executer": local_executor,
+                            "executer": docker_executor,
 #                           "use_docker": docker_executor,
                            "last_n_messages": 1},
 #    agent_config_save_path="captain_agent_configs",
@@ -58,11 +81,9 @@ captain_user_proxy = UserProxyAgent(name="captain_user_proxy",
                                     code_execution_config={"use_docker": docker_executor})
 
 USER_QUERY = """
-setup docker and home assistant with docker and check if you can use the home assistant api for configuration and management.
-Create a short overview of the local Pi
+Lets check if we can configure home assistant via the api on the running container.
+lets create the frist user for home assistant via the api, name="Papaja"
 """.strip()
-
-print("!!!!!!!!Starting Chat!!!!!!!!!")
 
 result = captain_user_proxy.initiate_chat(
     captain_agent,
