@@ -49,7 +49,7 @@ DEFAULT_NESTED_CONFIG = {
         "default_llm_config": {"temperature": 1, "top_p": 0.95, "max_tokens": 2048},
         "code_execution_config": {
             "timeout": 300,
-            "work_dir": "groupchat",
+            "work_dir": ".",
             "last_n_messages": 2,
             "use_docker": False,
         },
