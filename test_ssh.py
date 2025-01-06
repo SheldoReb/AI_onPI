@@ -1,9 +1,12 @@
+from RemoteCommandLineCodeExecutor import RemoteCommandLineCodeExecutor
+
+
 remote_executor = RemoteCommandLineCodeExecutor(
-    remote_host="1.2.3.4",
-    remote_user="user",
+    remote_host="192.168.178.18",
+    remote_user="ai",
+    ssh_key_path=r"C:\Users\Sheldon\.ssh\id_ed25519_remote_ssh",
     ssh_port=22,
-    ssh_key_path="/path/to/private_key",
-    known_hosts_file="~/.ssh/known_hosts",
+    known_hosts_file=r"C:\Users\Sheldon\.ssh\known_hosts",
     allow_unknown_hosts=False,
 )
 

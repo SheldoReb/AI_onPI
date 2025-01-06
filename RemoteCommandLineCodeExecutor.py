@@ -7,10 +7,10 @@ from hashlib import md5
 from typing import ClassVar, List, Optional, Dict, Any
 from pathlib import Path
 
-from ..code_utils import TIMEOUT_MSG
-from .base import CodeExecutor, CodeBlock, CommandLineCodeResult
-from .markdown_code_extractor import MarkdownCodeExtractor
-from .utils import silence_pip, _get_file_name_from_content
+from autogen.code_utils import TIMEOUT_MSG
+from autogen.coding.base import CodeExecutor, CodeBlock, CommandLineCodeResult
+from autogen.coding.markdown_code_extractor import MarkdownCodeExtractor
+from autogen.coding.utils import silence_pip, _get_file_name_from_content
 
 class RemoteCommandLineCodeExecutor(CodeExecutor):
     """
