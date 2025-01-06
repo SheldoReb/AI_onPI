@@ -23,7 +23,9 @@ WORKDIR /home/ag2ai
 # Install Python packages
 RUN pip install --upgrade pip
 RUN pip install autogen[teachable,lmm,retrievechat,mathchat,blendsearch,captainagent] autogenra
-RUN pip install numpy pandas matplotlib seaborn scikit-learn requests urllib3 nltk pillow pytest beautifulsoup4  pytest-xdist pytest-cov pysqlite3
+RUN pip install numpy pandas matplotlib seaborn scikit-learn requests urllib3 nltk pillow pytest beautifulsoup4  pytest-xdist pytest-cov
+RUN pip install pydantic --upgrade
+RUN pip install langchain_community
 
 # Expose port
 EXPOSE 8081
