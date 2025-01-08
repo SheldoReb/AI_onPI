@@ -1,2 +1,3 @@
 docid	document_content
 1	information_retrieval scrape_url Scrapes a website using BeautifulSoup and writes content to a file.
+2	IoT shelly_gateway_1 A tool to call ShellyBluGw_1 Sys interface"

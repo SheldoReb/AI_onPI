@@ -62,8 +62,8 @@ captain_agent = CaptainAgent(
     llm_config=llm_config,
     nested_config=NESTED_CONFIG,
     agent_config_save_path="captain_agent_configs",
-    agent_lib="expert_library/expert_library.json", 
-    tool_lib="tools" 
+#    agent_lib="expert_library/expert_library.json", 
+#    tool_lib="tools" 
 )
 
 captain_user_proxy = UserProxyAgent(name="captain_user_proxy", 
@@ -73,17 +73,7 @@ HA_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiIwNTlhZWEyYmYwNDg0ZGZ
 SHELLYBLU_GATEWAY1="192.168.178.194"
 
 USER_QUERY = """
-List of local devices, environmental variables are loaded in your environment.
-Name                    docs_url                                                                environmental variables
-IP_ADRESS_HOMEASSITANT  https://developers.home-assistant.io/docs/api/rest/                     IP_ADRESS_HOMEASSITANT
-ShellyBlueGateway1                                                                              SHELLYBLU_GATEWAY1
-ShellyScriptsTutorial   https://shelly-api-docs.shelly.cloud/gen2/Scripts/Tutorial                                      
-
-Set up MQTT docker container on Raspberry 3 B, docker already installed.
-Set up MQTT in homa assistant over tha api.
-Set up MQTT for ShellyBlueGateway1, so that we can control it over home assistant. 
-
-REMEMBER EVERYBPODY TO USE TOOLS PROVIDED 
+Check if you can get the home assistant config from homeassistant api (192.168.178.20:8123)
 """.strip()
 
 result = captain_user_proxy.initiate_chat(

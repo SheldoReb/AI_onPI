@@ -1,6 +1,3 @@
-from bs4 import BeautifulSoup
-from langchain_community.document_loaders.recursive_url_loader import RecursiveUrlLoader
-
 def scrape_url(url: str, output_file: str = "scraped_data.txt"):
     """
     Scrapes a website at the given URL using BeautifulSoup and writes content to a file.
@@ -9,6 +6,9 @@ def scrape_url(url: str, output_file: str = "scraped_data.txt"):
         url (str): The URL to be scraped.
         output_file (str): The path of the output file to store content.
     """
+    from bs4 import BeautifulSoup
+    from langchain_community.document_loaders.recursive_url_loader import RecursiveUrlLoader
+    
     loader = RecursiveUrlLoader(
         url=url,
         extractor=lambda html: BeautifulSoup(html, "html.parser").get_text()

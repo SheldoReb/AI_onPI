@@ -1,0 +1,23 @@
+Page Title: Shelly BLU Gateway | Shelly Technical Documentation
+Page URL: https://shelly-api-docs.shelly.cloud/gen2/Devices/Gen2/ShellyBluGw/
+Page Content:
+
+
+
+
+
+Shelly BLU Gateway | Shelly Technical Documentation
+
+
+
+
+
+
+
+
+Skip to main contentHomepageGen 1 Device APIGen 2+ Device APIBLU DevicesIntegrator APICloud Control API1.01.00.14Welcome!GeneralComponents and ServicesDevicesGen 2Shelly Plus 1 (Mini)Shelly Plus 1 PM (Mini)Shelly Plus 2 PMShelly Plus I4Shelly Plus Plug ITShelly Plus Plug SShelly Plus Plug UKShelly Plus Plug USShelly Plus H&TShelly Plus SmokeShelly Plus WallDimmerShelly Plus RGBW PMShelly Plus 0-10V DimmerShelly Plus PM MiniShelly Plus UniShelly Pro 1Shelly Pro 1 PMShelly Pro 2Shelly Pro 2 PMShelly Pro 3Shelly Pro 4 PMShelly Pro Dual Cover PMShelly Pro EMShelly Pro 3 EM (400)Shelly Pro Dimmer 1 PMShelly Pro Dimmer 2 PMShelly Pro Dimmer 0/1-10V PMShelly BLU GatewayGen 3XScriptsDynamic ComponentsAdd-OnsIntegrationsChangelogDevicesGen 2Shelly BLU GatewayVersion: 1.0On this pageShelly BLU GatewayThe following components are available:SystemWiFiBluetooth Low EnergyCloudMQTTOutbound WebsocketUp to 10 instances of ScriptBluGwBluGw​The BluGw component handles device-specific settings.Methods​BluGw.SetConfig​Properties:PropertyTypeDescriptionconfigobjectConfiguration that the method takesFind more about the config properties in config sectionBluGw.GetConfig​Find more about the config properties in config sectionBluGw.GetStatus​The BluGw component does not own any status properties.Configuration​PropertyTypeDescriptionsys_led_enablebooleanEnable or disable system LED.infoThe system LED lights up for 3 seconds to reflect network status changes even when sys_led_enable is set to false.Examples​BluGw.GetStatus example​BluGw.GetStatus HTTP GET RequestBluGw.GetStatus Curl RequestBluGw.GetStatus Mos Requesthttp://192.168.33.1/rpc/BluGw.GetStatuscurl -X POST -d '{"id":1,"method":"BluGw.GetStatus"}' http://${SHELLY}/rpcmos --port ${PORT} call BluGw.GetStatusResponseBluGw.GetStatus HTTP GET ResponseBluGw.GetStatus Curl ResponseBluGw.GetStatus Mos Response{}{  "id": 1,  "params": {}}{}BluGw.GetConfig example​BluGw.GetConfig HTTP GET RequestBluGw.GetConfig Curl RequestBluGw.GetConfig Mos Requesthttp://192.168.33.1/rpc/BluGw.GetConfigcurl -X POST -d '{"id":1,"method":"BluGw.GetConfig"}' http://${SHELLY}/rpcmos --port ${PORT} call BluGw.GetConfigResponseBluGw.GetConfig HTTP GET ResponseBluGw.GetConfig Curl ResponseBluGw.GetConfig Mos Response{  "sys_led_enable": true}{  "id": 1,  "params": {    "sys_led_enable": true  }}{  "sys_led_enable": true}BluGw.SetConfig example​BluGw.SetConfig HTTP GET RequestBluGw.SetConfig Curl RequestBluGw.SetConfig Mos Requesthttp://192.168.33.1/rpc/BluGw.SetConfig?config={"sys_led_enable":false}curl -X POST -d '{"id":1,"method":"BluGw.SetConfig","params":{"config":{"sys_led_enable":false}}}' http://${SHELLY}/rpcmos --port ${PORT} call BluGw.SetConfig '{"config":{"sys_led_enable":false}}'ResponseBluGw.SetConfig HTTP GET ResponseBluGw.SetConfig Curl ResponseBluGw.SetConfig Mos Response{  "restart_required": false}{  "id": 1,  "params": {    "restart_required": false  }}{  "restart_required": false}PreviousShelly Pro Dimmer 0/1-10V PMNextShelly 1BluGwMethodsBluGw.SetConfigBluGw.GetConfigBluGw.GetStatusConfigurationExamplesBluGw.GetStatus exampleBluGw.GetConfig exampleBluGw.SetConfig exampleCopyright © 2024 Allterco Robotics. Built with Docusaurus.
+
+
+
+
+
