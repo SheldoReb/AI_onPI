@@ -62,21 +62,33 @@ captain_agent = CaptainAgent(
     llm_config=llm_config,
     nested_config=NESTED_CONFIG,
     agent_config_save_path="captain_agent_configs",
-#    agent_lib="expert_library/expert_library.json", 
-#    tool_lib="tools" 
+    agent_lib="expert_library/expert_library.json", 
+    tool_lib="tools" 
 )
 
 captain_user_proxy = UserProxyAgent(name="captain_user_proxy", 
                                     human_input_mode="ALWAYS")
 
-HA_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiIwNTlhZWEyYmYwNDg0ZGZjODQxMTlhMWE2OTg5YjkwOSIsImlhdCI6MTczNjM3MDc1MSwiZXhwIjoyMDUxNzMwNzUxfQ.zj3TL1qGdf7nlYlFaz66H-aLTWsFCS7UMliRlogtGF4"
+HA_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiIwNTlhZWEyYmYwNDg0ZGZjODQxMTlhMWE2OTg5YjkwOSIsImlhdCI6MTczNjM3MDc1MSwiZXhwIjoyMDUxNzMwNzUxfQ.zj3TL1qGdf7nlYlFaz66H-aLTWsFCS7UMliRlogtGF4"
 SHELLYBLU_GATEWAY1="192.168.178.194"
 
 USER_QUERY = """
+Use: "https://  developers.home-assistant.io/docs/api/rest/" and env vars: HA_TOKEN, SHELLYBLU_GATEWAY1
 Check if you can get the home assistant config from homeassistant api (192.168.178.20:8123)
 """.strip()
 
 result = captain_user_proxy.initiate_chat(
+    captain_agent,
+    message=USER_QUERY,
+    max_turns=1,
+    clear_history=False,
+)
+print("Pause")
+input("Press Enter to continue...")
+USER_QUERY2 = """
+Now list all shelly devices in a structured way.
+""".strip()
+captain_user_proxy.initiate_chat(
     captain_agent,
     message=USER_QUERY,
     max_turns=10,
